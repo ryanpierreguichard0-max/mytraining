@@ -78,14 +78,44 @@ input::placeholder{color:#8995b1}
 @media(max-width:800px){header,.tabs,main{padding-left:18px;padding-right:18px}.week-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#home>.card:nth-child(2){grid-template-columns:1fr}#home>.card:nth-child(2) .row,#home>.card:nth-child(2) .btn{grid-column:1;grid-row:auto}#home>.card:nth-child(2) .btn{margin-top:18px}header .brand:after{display:none}}
 @media(max-width:530px){header{padding-top:22px}.tabs{gap:7px;margin:14px auto}.tabs button{min-height:42px;padding:10px 14px;font-size:.83rem}.card{border-radius:20px;padding:19px;margin:11px 0}#home>.card:first-child{padding:25px 19px}#home>.card:first-child h2{font-size:1.85rem}.week-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.week-day{min-height:130px;padding:15px 12px}.stats{gap:7px}.stat{padding:13px 9px;border-radius:12px}.stat strong{font-size:1.55rem}.stat .muted{font-size:.67rem}.row{flex-wrap:wrap}.day-tag{font-size:.7rem}.calendar{gap:4px}.day{padding:9px 0;font-size:.75rem}#home>.card:nth-child(2) .row>span{width:66px;height:66px;font-size:1.8rem!important}.timer-controls .btn{flex:1;min-width:0;padding:11px 8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Personnalisation des exercices du programme */
+.session-list li .exercise-content{flex:1;min-width:0}
+.session-list li .remove-workout{flex:0 0 auto;background:rgba(248,129,163,.10);border:1px solid rgba(248,129,163,.35);color:#ffd2de;border-radius:10px;padding:9px 12px;font:inherit;font-size:.78rem;font-weight:750;cursor:pointer}
+.session-list li .remove-workout:hover{background:rgba(248,129,163,.21)}
+.hidden-workouts{margin-top:16px;padding:15px;border-radius:15px;border:1px dashed rgba(178,163,255,.37);background:rgba(118,89,225,.06)}
+.hidden-workouts h3{margin:0 0 4px;font-size:.94rem}
+.hidden-workouts p{margin:0 0 9px;font-size:.82rem;color:#aebbd5}
+.hidden-workout{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid rgba(185,172,240,.15);font-size:.88rem}
+.hidden-workout button{border:1px solid rgba(129,244,201,.35);border-radius:9px;color:#a6ffdc;background:rgba(48,188,148,.11);padding:8px 11px;font:inherit;font-size:.78rem;font-weight:750;cursor:pointer}
+.empty-workout{color:#c4c9e3;padding:16px 0;font-size:.94rem}
+@media(max-width:530px){.session-list li{gap:9px}.session-list li .emoji{width:42px;height:42px;flex-basis:42px}.session-list li .remove-workout{padding:8px 9px;font-size:.72rem}}
+
+/* Exercices faits : ils quittent la liste à faire, mais restent récupérables. */
+.completion-progress{display:flex;flex-direction:column;gap:9px;margin:20px 0 10px;color:#c6d1f0;font-size:.86rem;font-weight:750}
+.progress-track{height:9px;background:#0b1429;border:1px solid rgba(164,155,242,.2);border-radius:50px;overflow:hidden}
+#completionFill{height:100%;width:0;background:linear-gradient(90deg,#22c4ac,#9a83ff);border-radius:50px;transition:width .22s ease}
+.exercise-heading{font-size:.9rem;color:#bbaeff;letter-spacing:.02em;margin-top:22px}
+.workout-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.session-list li .complete-workout{border:1px solid rgba(104,246,190,.48);background:linear-gradient(110deg,#117960,#1c9980);color:#fff;border-radius:10px;padding:10px 13px;font:inherit;font-size:.82rem;font-weight:800;cursor:pointer;white-space:nowrap}
+.session-list li .complete-workout:hover{filter:brightness(1.14)}
+.completed-exercises{background:rgba(15,107,85,.12);border:1px solid rgba(109,240,190,.25);border-radius:16px;padding:14px 16px;margin:18px 0}
+.completed-exercises summary{cursor:pointer;color:#9af5ce;font-weight:800;list-style:revert}
+.completed-exercises summary span{float:right;color:#9cb8b4;font-size:.76rem;font-weight:550}
+.completed-list{list-style:none;padding:0;margin:12px 0 0}
+.completed-list li{display:flex;gap:11px;align-items:center;padding:11px 0;border-top:1px solid rgba(130,200,182,.15)}
+.completed-list .exercise-content{flex:1;min-width:0}.completed-list strong{color:#c7dfda}.completed-list small{display:block;color:#93b6ac;font-size:.79rem}
+.done-symbol{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:rgba(42,188,147,.2);color:#7cf0bb;flex:0 0 32px;font-weight:900}
+.undo-workout{padding:9px 11px;border-radius:10px;border:1px solid rgba(160,167,244,.36);background:#252d4b;color:#dedbff;font:inherit;font-size:.78rem;font-weight:750;cursor:pointer}
+@media(max-width:650px){.session-list li{flex-wrap:wrap}.session-list li .exercise-content{flex:1 1 calc(100% - 72px)}.workout-actions{width:100%;justify-content:flex-end}.completed-exercises summary span{float:none;margin-left:10px}}
 </style></head><body>
 <header><div class="brand"><img src="icon.svg" alt=""><div><h1>MyTraining</h1><p>Plus fort, jour après jour 💪</p></div></div></header>
 <nav class="tabs" aria-label="Navigation"><button class="active" data-view="home">Accueil</button><button data-view="exercises">Exercices</button><button data-view="calendar">Calendrier</button><button data-view="timer">Repos</button><button data-view="progress">Suivi</button></nav>
 <main>
 <section id="home" class="view active"><div class="card"><div class="eyebrow">Ton espace personnel</div><h2>Salut ! Prêt pour ta séance ?</h2><p class="muted">Ton programme du lundi au vendredi, à ton rythme.</p><div class="stats"><div class="stat"><strong id="statDone">0</strong><span class="muted">Séances faites</span></div><div class="stat"><strong id="statPlanned">5</strong><span class="muted">Séances / semaine</span></div><div class="stat"><strong id="statExercises">19</strong><span class="muted">Exercices</span></div></div></div><div class="card"><div class="row"><div><div class="eyebrow">Ta prochaine séance</div><h3 id="nextTitle">Haut du corps</h3><p class="muted" id="nextDate">À planifier dans le calendrier</p></div><span style="font-size:2rem">🏋️</span></div><button class="btn full" onclick="showView('exercises')">Voir mon programme</button></div><div class="card"><div class="eyebrow">Ton rythme de la semaine</div><h3>Du lundi au vendredi</h3><div id="homeWeek" class="week-grid"></div><p class="note">Samedi et dimanche : repos. Adapte les répétitions à ton énergie et fais des pauses si besoin.</p></div><p class="note">Conseil : commence doucement, soigne tes mouvements et arrête si une douleur apparaît.</p></section>
 <section id="exercises" class="view">
-<div class="card"><div class="eyebrow">Programme de la semaine</div><h2>Mes entraînements</h2><p class="muted">Choisis un jour pour voir les exercices. Pas de matériel nécessaire.</p><div class="week-grid" id="weekButtons"></div></div>
-<div class="card"><div class="row"><div><div class="eyebrow" id="selectedDay">Lundi</div><h2 id="selectedWorkout">Pectoraux et triceps</h2></div><span class="day-tag" id="selectedCount">3 exercices</span></div><p class="muted" id="selectedHint">60 à 90 secondes de récupération entre les séries.</p><ul class="session-list" id="workoutList"></ul><button class="btn green full" id="finishWorkout">✓ J'ai terminé cette séance</button><p class="note" id="workoutFeedback"></p></div>
+<div class="card"><div class="eyebrow">Programme de la semaine</div><h2>Mes entraînements</h2><p class="muted">Choisis un jour pour voir les exercices. Appuie sur « ✓ Terminé » après chaque exercice : il disparaît de ta liste à faire. Tu peux aussi masquer un exercice si tu ne veux pas le faire.</p><div class="week-grid" id="weekButtons"></div></div>
+<div class="card"><div class="row"><div><div class="eyebrow" id="selectedDay">Lundi</div><h2 id="selectedWorkout">Pectoraux et triceps</h2></div><span class="day-tag" id="selectedCount">3 exercices</span></div><p class="muted" id="selectedHint">60 à 90 secondes de récupération entre les séries.</p><div class="completion-progress"><span id="completionText">0 exercice terminé</span><div class="progress-track" role="progressbar" aria-label="Progression des exercices" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="completionBar"><div id="completionFill"></div></div></div><h3 class="exercise-heading">À faire</h3><ul class="session-list" id="workoutList"></ul><div id="completedWorkouts"></div><div id="hiddenWorkouts"></div><button class="btn green full" id="finishWorkout">✓ J'ai terminé cette séance</button><p class="note" id="workoutFeedback"></p></div>
 <div class="card"><div class="row"><div><div class="eyebrow">Bibliothèque personnelle</div><h2>Mes exercices ajoutés</h2></div><select id="filter"><option value="all">Tous</option><option value="Haut du corps">Haut du corps</option><option value="Bas du corps">Bas du corps</option><option value="Dos">Dos</option></select></div><div id="exerciseList"></div></div>
 <div class="card"><h3>Ajouter un exercice personnel</h3><form id="addForm"><p><input id="newName" placeholder="Nom de l'exercice" required style="width:100%"></p><div class="row"><input id="newSets" type="number" min="1" max="10" value="2" aria-label="Séries" style="width:48%"><input id="newReps" type="number" min="1" max="50" value="10" aria-label="Répétitions" style="width:48%"></div><p><select id="newGroup" style="width:100%"><option>Haut du corps</option><option>Bas du corps</option><option>Dos</option></select></p><button class="btn full">Ajouter à ma liste</button></form></div>
 </section>
@@ -109,6 +139,27 @@ let exercises=get('exercises',defaults),plans=get('plans',[]),history=get('histo
 // Migrate only the untouched original 6-exercise examples, keeping any personal changes.
 const originalNames=['Développé couché','Rowing avec haltères','Squat','Tirage vertical','Développé épaules','Gainage'];
 if(exercises.length===originalNames.length && exercises.every((e,i)=>e.name===originalNames[i])){exercises=[];save('exercises',exercises)}
+// Les exercices retirés sont enregistrés séparément des séances terminées.
+// Format: { '0': [0,2], '1': [1] } : index du jour -> index de l'exercice.
+let hiddenWorkouts=get('hidden_workouts',{});
+let completedWorkouts=get('completed_workouts',{});
+if(!completedWorkouts||typeof completedWorkouts!=='object'||Array.isArray(completedWorkouts))completedWorkouts={};
+if(!hiddenWorkouts||typeof hiddenWorkouts!=='object'||Array.isArray(hiddenWorkouts))hiddenWorkouts={};
+const activeItems=(day)=>weekProgram[day].items.filter((_,index)=>!(hiddenWorkouts[day]||[]).includes(index));
+const exerciseCount=(day)=>activeItems(day).length;
+// Un exercice fait sort de la liste « À faire », sans disparaître définitivement.
+// Le suivi est sauvegardé pour la semaine en cours ; une nouvelle semaine repart à zéro.
+const currentWeek=()=>{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-(d.getDay()+6)%7);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const completionKey=day=>currentWeek()+':'+day;
+const completedFor=day=>Array.isArray(completedWorkouts[completionKey(day)])?completedWorkouts[completionKey(day)]:[];
+const doneCount=day=>activeItems(day).filter(item=>completedFor(day).includes(weekProgram[day].items.indexOf(item))).length;
+function setExerciseDone(day,index,done){
+ if(!weekProgram[day]||!weekProgram[day].items[index])return;
+ const key=completionKey(day),list=completedFor(day);
+ completedWorkouts[key]=done?[...new Set([...list,index])]:list.filter(i=>i!==index);
+ save('completed_workouts',completedWorkouts);
+ renderAll();
+}
 let selectedDay=0;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -119,13 +170,37 @@ const alreadyDone=(date,title)=>history.some(h=>h.date===date&&h.type===title);
 function showView(id){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));renderAll()}
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 function selectWorkout(i){selectedDay=i;showView('exercises')}
+function removeWorkoutExercise(day,index){
+ let list=hiddenWorkouts[day]||[];
+ if(!list.includes(index))hiddenWorkouts[day]=[...list,index];
+ save('hidden_workouts',hiddenWorkouts);
+ renderAll();
+}
+function restoreWorkoutExercise(day,index){
+ hiddenWorkouts[day]=(hiddenWorkouts[day]||[]).filter(i=>i!==index);
+ save('hidden_workouts',hiddenWorkouts);
+ renderAll();
+}
 function renderWeek(){
- $('homeWeek').innerHTML=weekProgram.map((w,i)=>`<button class="week-day" onclick="selectWorkout(${i})"><small>${w.day}</small><strong>${w.emoji} ${esc(w.title)}</strong><small>${w.items.length} exercices</small></button>`).join('');
- $('weekButtons').innerHTML=weekProgram.map((w,i)=>`<button class="week-day ${selectedDay===i?'selected':''}" onclick="selectWorkout(${i})"><small>${w.day}</small><strong>${w.emoji} ${esc(w.title)}</strong><small>${w.items.length} exercices</small></button>`).join('');
- let w=weekProgram[selectedDay];$('selectedDay').textContent=w.day;$('selectedWorkout').textContent=w.title;$('selectedCount').textContent=w.items.length+' exercices';
- $('workoutList').innerHTML=w.items.map(item=>`<li><span class="emoji">${item[2]}</span><div><strong>${esc(item[0])}</strong><small>${esc(item[1])}</small></div></li>`).join('');
- $('workoutFeedback').textContent=alreadyDone(today(),w.title)?'✓ Cette séance est déjà enregistrée aujourd’hui.':'Tu peux adapter la séance selon ton énergie.';
- $('finishWorkout').disabled=alreadyDone(today(),w.title);
+ const weekCard=(w,i,selected)=>`<button class="week-day ${selected?'selected':''}" onclick="selectWorkout(${i})"><small>${w.day}</small><strong>${w.emoji} ${esc(w.title)}</strong><small>${doneCount(i)} / ${exerciseCount(i)} terminés</small></button>`;
+ $('homeWeek').innerHTML=weekProgram.map((w,i)=>weekCard(w,i,false)).join('');
+ $('weekButtons').innerHTML=weekProgram.map((w,i)=>weekCard(w,i,selectedDay===i)).join('');
+ const w=weekProgram[selectedDay], hidden=hiddenWorkouts[selectedDay]||[],completed=completedFor(selectedDay);
+ const visibleEntries=w.items.map((item,index)=>({item,index})).filter(({index})=>!hidden.includes(index));
+ const waiting=visibleEntries.filter(({index})=>!completed.includes(index)),finished=visibleEntries.filter(({index})=>completed.includes(index));
+ const completedN=finished.length,total=visibleEntries.length;
+ $('selectedDay').textContent=w.day;
+ $('selectedWorkout').textContent=w.title;
+ $('selectedCount').textContent=`${waiting.length} à faire`;
+ $('completionText').textContent=`${completedN} / ${total} exercice${total>1?'s':''} terminé${total>1?'s':''} cette semaine`;
+ const pct=total?Math.round(completedN/total*100):0;
+ $('completionFill').style.width=pct+'%';
+ $('completionBar').setAttribute('aria-valuenow',pct);
+ $('workoutList').innerHTML=waiting.map(({item,index})=>`<li><span class="emoji" aria-hidden="true">${item[2]}</span><div class="exercise-content"><strong>${esc(item[0])}</strong><small>${esc(item[1])}</small></div><div class="workout-actions"><button type="button" class="complete-workout" onclick="setExerciseDone(${selectedDay},${index},true)" aria-label="Marquer ${esc(item[0])} terminé">✓ Terminé</button><button type="button" class="remove-workout" onclick="removeWorkoutExercise(${selectedDay},${index})" aria-label="Enlever ${esc(item[0])} du programme">Enlever</button></div></li>`).join('') || `<li class="empty-workout">${total===0?'Il n’y a aucun exercice à faire pour ce jour.':'Bravo, tu n’as plus d’exercice à faire pour cette séance !'}</li>`;
+ $('completedWorkouts').innerHTML=finished.length?`<details class="completed-exercises"><summary>✓ Exercices terminés (${finished.length}) <span>Voir / masquer</span></summary><ul class="completed-list">${finished.map(({item,index})=>`<li><span class="done-symbol">✓</span><div class="exercise-content"><strong>${esc(item[0])}</strong><small>${esc(item[1])}</small></div><button type="button" class="undo-workout" onclick="setExerciseDone(${selectedDay},${index},false)" aria-label="Remettre ${esc(item[0])} dans les exercices à faire">↶ Remettre</button></li>`).join('')}</ul></details>`:'';
+ $('hiddenWorkouts').innerHTML=hidden.length?`<div class="hidden-workouts"><h3>Exercices enlevés du programme</h3><p>Ces exercices sont masqués jusqu’à ce que tu les remettes.</p>${w.items.map((item,index)=>hidden.includes(index)?`<div class="hidden-workout"><span>${item[2]} ${esc(item[0])}</span><button type="button" onclick="restoreWorkoutExercise(${selectedDay},${index})" aria-label="Remettre ${esc(item[0])}">Remettre</button></div>`:'').join('')}</div>`:'';
+ $('workoutFeedback').textContent=alreadyDone(today(),w.title)?'✓ Cette séance est déjà enregistrée aujourd’hui.':completedN===total&&total>0?'Tous les exercices sont cochés ! Tu peux enregistrer la séance ci-dessous.':'Coche chaque exercice quand tu l’as terminé. Adapte la séance à ton énergie.';
+ $('finishWorkout').disabled=alreadyDone(today(),w.title)||total===0;
 }
 $('finishWorkout').onclick=()=>{let w=weekProgram[selectedDay];if(alreadyDone(today(),w.title))return;history.unshift({id:Date.now(),date:today(),type:w.title});save('history',history);renderAll();$('workoutFeedback').textContent='Bravo, séance enregistrée dans Suivi !'};
 function renderExercises(){let f=$('filter').value;$('exerciseList').innerHTML=exercises.filter(e=>f==='all'||e.group===f).map(e=>`<div class="exercise"><span class="emoji">${e.emoji||'🏋️'}</span><div style="flex:1"><strong>${esc(e.name)}</strong><p>${esc(e.group)} · ${e.sets} séries × ${e.reps} répétitions</p></div><button class="btn secondary" onclick="removeExercise(${exercises.indexOf(e)})" aria-label="Supprimer ${esc(e.name)}">×</button></div>`).join('')||'<p class="muted">Aucun exercice personnel. Ton programme de la semaine est affiché au-dessus.</p>'}
@@ -142,10 +217,10 @@ function renderCalendar(){
  let now=new Date(),y=now.getFullYear(),m=now.getMonth(),first=new Date(y,m,1),last=new Date(y,m+1,0);$('monthLabel').textContent=now.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
  let labels=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];let html=labels.map(x=>`<div class="muted" style="font-size:.75rem;padding:5px">${x}</div>`).join('');let offset=(first.getDay()+6)%7;for(let i=0;i<offset;i++)html+='<div></div>';
  for(let d=1;d<=last.getDate();d++){let key=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,di=weekdayFor(key),has=di<5||plans.some(p=>p.date===key),done=history.some(h=>h.date===key)||plans.some(p=>p.date===key&&p.done);html+=`<div class="day ${has?'has':''} ${done?'done':''}" title="${di<5?weekProgram[di].title:'Repos'}">${d}</div>`} $('monthGrid').innerHTML=html;
- let next=getNextWorkout();$('nextTitle').textContent=next?next.w.title:'Repos';$('nextDate').textContent=next?`${next.w.day} ${fmtDate(next.date)} · ${next.w.items.length} exercices`:'Prochaine séance lundi';
+ let next=getNextWorkout();$('nextTitle').textContent=next?next.w.title:'Repos';$('nextDate').textContent=next?`${next.w.day} ${fmtDate(next.date)} · ${exerciseCount(weekProgram.indexOf(next.w))} exercices`:'Prochaine séance lundi';
 }
 function renderProgress(){let future=plans.filter(p=>!p.done&&p.date>=today()).length,weekStart=new Date();weekStart.setHours(0,0,0,0);weekStart.setDate(weekStart.getDate()-(weekStart.getDay()+6)%7);let week=history.filter(h=>new Date(h.date+'T12:00:00')>=weekStart).length;
- $('doneCount').textContent=history.length;$('planCount').textContent=future;$('weekCount').textContent=week;$('statDone').textContent=history.length;$('statExercises').textContent=weekProgram.reduce((n,w)=>n+w.items.length,0)+exercises.length;$('statPlanned').textContent=5;
+ $('doneCount').textContent=history.length;$('planCount').textContent=future;$('weekCount').textContent=week;$('statDone').textContent=history.length;$('statExercises').textContent=weekProgram.reduce((n,w,i)=>n+exerciseCount(i),0)+exercises.length;$('statPlanned').textContent=5;
  $('history').innerHTML=history.length?history.map(h=>`<div class="history-item"><div><strong>${esc(h.type)}</strong><div class="muted">${fmtDate(h.date)}</div></div><span class="pill">✓ Terminée</span></div>`).join(''):'<p class="muted">Tes séances terminées apparaîtront ici.</p>'}
 $('markDone').onclick=()=>{history.unshift({id:Date.now(),date:today(),type:$('doneType').value});save('history',history);renderAll()};
 function renderAll(){renderWeek();renderExercises();renderCalendar();renderProgress()}
